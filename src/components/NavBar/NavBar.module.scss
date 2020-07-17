@@ -1,0 +1,90 @@
+@import "../../variables.scss";
+
+.navbar {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: $secondary-shadow;
+  z-index: 8;
+  height: 8 * $base-value;
+  overflow: hidden;
+
+  img {
+    height: 70px;
+    width: 180px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    .displayMobileNav {
+      display: flex;
+      animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      flex-direction: column;
+      position: fixed;
+      right: 0;
+      top: 0;
+      align-items: center;
+      background-color: $primary-yellow;
+      height: 100vh;
+      width: 300px;
+      box-shadow: $primary-shadow;
+      padding-top: 80px;
+      z-index: 9;
+
+      @media screen and (min-width: 850px) {
+        flex-direction: row;
+        position: static;
+        padding: 0;
+        height: auto;
+        box-shadow: none;
+        width: auto;
+      }
+    }
+    .hideMobileNav {
+      display: none;
+      @media screen and (min-width: 850px) {
+        display: flex;
+      }
+    }
+
+    a {
+      color: $primary-black;
+      padding: $base-value;
+      margin-left: $base-value;
+      margin-right: $base-value;
+      text-decoration: none;
+      &:hover {
+        background-color: $white-transparent;
+        transition: 0.5s;
+        border-radius: $base-value;
+      }
+      &:visited {
+        color: $primary-black;
+      }
+    }
+    h3 {
+      &.burger {
+        z-index: 10;
+        font-size: 1.3em;
+        padding: $base-value;
+        margin-right: 2 * $base-value;
+
+        &:hover {
+          background-color: $white-transparent; // change to different animation
+          transition: 0.5s;
+          border-radius: $base-value;
+        }
+
+        @media screen and (min-width: 850px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
