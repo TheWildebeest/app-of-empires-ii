@@ -1,44 +1,59 @@
 import React, { Component } from "react";
 import styles from "./NavBar.module.scss";
-import { Link } from "@reach/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from '../../assets/intergr8-logo-transparent-black-no-tagline.png';
-
 
 class NavBar extends Component {
+
   state = {
-    navOpen: true
+    navIsShowing: true
   }
 
   toggleNav = () => {
     this.setState({
-      navOpen: !this.state.navOpen,
+      navIsShowing: !this.state.navIsShowing,
     })
   }
 
   displayNav = () => {
-    return this.state.navOpen ? styles.displayMobileNav : styles.hideMobileNav;
+    if (this.state.navIsShowing === true) {
+      return styles.display
+    }
   }
 
   toggleIcon = () => {
-    return this.state.navOpen ? "✖" : "📜";
+    return this.state.navIsShowing ? "✖" : "📜";
   }
 
 
   render() {
     return (
       <>
-        <nav className={styles.navbar}>
-          {/* <h1>Nav Bar</h1> */}
-          <img src={logo} alt="intergr8 logo" />
-          <div>
-            <div className={this.displayNav()}>
-              {this.renderNav()}
+        <nav className={styles.navBar + " " + this.displayNav()} >
+          <div className={styles.navToggler}>
+            <div className={styles.navBurger} onClick={this.toggleNav}>
+              <h3 className={styles.toggleIcon}>{this.toggleIcon()}</h3>
             </div>
-            <h3 className={styles.burger}>
-              {this.toggleIcon()}
-            </h3>
           </div>
+          <div className={styles.navContent}>
+            <div className={styles.mainMenu}>
+              <div className={styles.navLogo}></div>
+              <ul className={styles.navItems}>
+                <li className={styles.navItem} onClick={() => this.props.getApiData("civilizations")}><h3>
+                  Civilizations
+                </h3></li>
+                <li className={styles.navItem}><h3>
+                  Unit stats
+                </h3></li>
+                <li className={styles.navItem}><h3>
+                  Buildings
+                </h3></li>
+                <li className={styles.navItem}><h3>
+                  Taunts
+                </h3></li>
+              </ul>
+            </div>
+
+          </div>
+
         </nav>
       </>
     );
