@@ -8,13 +8,9 @@ import CivsIcon from '../../assets/icons/civs.png'
 class Civilizations extends Component {
 
   state = {
-    targetCiv: {
-      name: "...",
-      unique_unit: ["https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"],
-      unique_tech: ["https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"]
-    },
-    uniqueUnits: [],
-    uniqueTechs: [],
+    targetCiv: null,
+    uniqueUnits: null,
+    uniqueTechs: null,
     textVisible: true
   }
 
@@ -33,8 +29,10 @@ class Civilizations extends Component {
   }
 
   searchCiv = (searchbox) => {
-    let currentCiv = this.props.civilizations;
-    let searchTerm = searchbox.value;
+    let currentCiv = this.props.targetCiv; // object
+    console.log(currentCiv.name);
+    let searchTerm = searchbox.value; // string
+    console.log(searchTerm);
     if (!this.props.civilizations || !searchTerm) {
       console.log("no civs or empty search string")
     } else {
@@ -66,7 +64,10 @@ class Civilizations extends Component {
             id={"civilization"} type={"text"} placeholder={"Search for a civilization..."}
             htmlFor={"civilization"} iconUrl={CivsIcon} altText={"civilizations"}
             autoComplete={"off"} autoFocus={true} civilizations={civilizations} inputHandler={this.searchCiv} />
-          <ContentCard cardName={targetCiv.name} textVisible={this.state.textVisible} textFadeIn={this.state.textFadeIn} />
+          <ContentCard
+            cardName={!targetCiv ? "" : targetCiv.name}
+            textVisible={this.state.textVisible}
+            textFadeIn={this.state.textFadeIn} />
         </Overlay>
       </>
     );

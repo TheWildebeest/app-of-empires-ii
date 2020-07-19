@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    civilizations: [{ name: "...", unique_tech: ["..."], unique_unit: ["..."] }],
+    civilizations: null,
     structures: null,
     technologies: null,
     units: null,
