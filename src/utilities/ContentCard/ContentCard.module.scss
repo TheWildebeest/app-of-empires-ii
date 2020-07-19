@@ -1,0 +1,72 @@
+@import "../../variables.scss";
+
+.cardWrapper {
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  min-height: 50vh;
+  height: 50vh;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  margin: 2vh 0;
+}
+
+.cardHeading {
+  overflow-y: visible;
+  @include standard_vertical_layout;
+  height: 30%;
+  background-image: linear-gradient(#00000066, #00000066), url("../../assets/images/background-marble.jpg");
+  background-position: center;
+  background-size: auto;
+  background-repeat: repeat;
+  border-bottom: 4px goldenrod ridge;
+
+  h2 {
+    text-shadow: -10px -10px 10px black;
+    line-height: 15vh;
+    width: 100%;
+    overflow-y: visible;
+    font-family: "numberthree";
+    background: linear-gradient(
+        to bottom right,
+        black 0%,
+        black 40%,
+        goldenrod 45%,
+        silver 50%,
+        goldenrod 55%,
+        black 70%,
+        black 100%
+      ),
+      linear-gradient(to right, goldenrod, black);
+    background-clip: text;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 0.1px;
+    color: #ffffff66;
+    font-size: calc(8vmin + 16px);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0s;
+    transition-timing-function: linear;
+
+    &.fadeIn {
+      opacity: 1;
+      transition-property: opacity;
+      transition-duration: 1s;
+      transition-timing-function: ease;
+    }
+
+    &:first-letter {
+      color: silver;
+    }
+  }
+}
+
+.cardDetails {
+  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/fallback_campaign_render.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "numberfour";
+  font-size: 1em;
+  height: 70%;
+}

@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import NavBar from './components/NavBar'
+import Pages from './containers/Pages'
 import './App.css';
 
 class App extends Component {
 
   state = {
-    apiData: null,
-    civilization: null,
-    unit: null,
-    building: null,
-    taunt: null
+    civilizations: [{ name: "...", unique_tech: ["..."], unique_unit: ["..."] }],
+    structures: null,
+    technologies: null,
+    units: null,
+    searchTerm: null
+  }
+
+  cleanBizantines = (data) => {
+    const cleanData = [...data.civilizations];
+    let dirtyData = cleanData[2];
+    dirtyData.name = "Byzantines";
+    console.log(cleanData);
+    return cleanData;
   }
 
   getApiData = (urlParameter) => {
@@ -17,17 +25,30 @@ class App extends Component {
       fetch(`https://secret-ocean-49799.herokuapp.com/https://age-of-empires-2-api.herokuapp.com/api/v1/${urlParameter}`)
         .then(response => response)
         .then(response => response.json())
-        .then(data => this.setState({ apiData: data.civilizations }))
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+        .then((data) => {
+          return (
+            urlParameter === 'civilizations' ? this.setState({ civilizations: this.cleanBizantines(data) })
+              : urlParameter === 'structures' ? this.setState({ structures: data.structures })
+                : urlParameter === 'technologies' ? this.setState({ technologies: data.technologies })
+                  : this.setState({ units: data.units })
+          );
+        }
+        ).catch(error => console.log(error))
     );
   }
 
 
   render() {
-    const { civilization, unit, building, taunt } = this.state;
+    const { civilizations, structures, technologies, units, searchTerm } = this.state;
     return (
-      <NavBar getApiData={this.getApiData} civilization={civilization} unit={unit} building={building} taunt={taunt} />
+      <Pages
+        getApiData={this.getApiData}
+        civilizations={civilizations}
+        structures={structures}
+        technologies={technologies}
+        units={units}
+        searchTerm={searchTerm}
+      />
     );
   }
 }

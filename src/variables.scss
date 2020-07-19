@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "numberone";
+  src: url("./assets/fonts/CASTELAR.TTF");
+}
+
+@font-face {
+  font-family: "numbertwo";
+  src: url("./assets/fonts/centaurmt.ttf");
+}
+
+@font-face {
+  font-family: "numberthree";
+  src: url("./assets/fonts/lblack.ttf");
+}
+
+@font-face {
+  font-family: "numberfour";
+  src: url("./assets/fonts/vineritc.ttf");
+}
+
 @mixin standard_vertical_layout {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.pageHeadingWrapper {
+  @include standard_vertical_layout;
+  width: 100%;
+  height: max-content;
+  margin: 2vh 0;
+}
+
+.pageHeadingContent {
+  font-family: "numberone";
+  background: linear-gradient(to bottom right, gold, goldenrod, silver, goldenrod, gold),
+    linear-gradient(to right, goldenrod, black);
+  background-clip: text;
+  -webkit-text-stroke-color: #000000bb;
+  -webkit-text-stroke-width: 0.1px;
+  color: transparent;
+  font-size: calc(8vmin);
+  line-height: auto;
+
+  &::first-letter {
+    font-family: "numberone";
+    background: linear-gradient(to right, gold, black);
+    -webkit-text-stroke-color: #000000bb;
+    -webkit-text-stroke-width: 0.1px;
+    background-clip: text;
+    color: #ffffff22;
+    font-size: 1.5em;
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+
+.pageWrapper {
+  @include standard_vertical_layout;
+  justify-content: flex-start;
+  padding: 8%;
+  padding-top: 12vh;
+  min-height: 100vh;
+  max-width: 100vw;
+  background-image: radial-gradient(#00000033, #000000dd);
+}
