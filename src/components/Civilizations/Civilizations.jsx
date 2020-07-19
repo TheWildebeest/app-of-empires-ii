@@ -29,28 +29,20 @@ class Civilizations extends Component {
   }
 
   searchCiv = (searchbox) => {
-    let currentCiv = this.props.targetCiv; // object
-    console.log(currentCiv.name);
-    let searchTerm = searchbox.value; // string
-    console.log(searchTerm);
-    if (!this.props.civilizations || !searchTerm) {
-      console.log("no civs or empty search string")
-    } else {
+    let currentCiv;
+    if (searchbox.value && this.props.civilizations) {
       currentCiv = this.props.civilizations.filter(
-        ((civilization) => {
-          const civilizationName = civilization.name.toUpperCase();
-          searchTerm = searchTerm.toUpperCase();
-          return civilizationName.includes(searchTerm);
-        })
+        civilization =>
+          civilization.name.toUpperCase().includes(searchbox.value.toUpperCase())
       );
+    } else {
+      currentCiv = [{ name: "...", unique_unit: "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager", unique_tech: "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow" }]
     }
     this.setState({
       targetCiv: currentCiv[0]
     });
     console.log(currentCiv[0]);
     this.textFadeIn();
-    // console.log(targetCiv.name)
-    // this.getUniqueUnit(this.state.targetCiv)
   }
 
   render() {
