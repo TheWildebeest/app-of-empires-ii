@@ -4,3 +4,13 @@
   box-sizing: border-box;
   line-height: 1em;
 }
+
+body {
+  height: max-content;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("./assets/images/texture.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,88 +1,108 @@
 @import "../../variables.scss";
 
-.navbar {
-  background-color: black;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: $secondary-shadow;
-  z-index: 8;
-  height: 8 * $base-value;
-  overflow: hidden;
+@font-face {
+  font-family: "numberone";
+  src: url("../../assets/fonts/CASTELAR.TTF");
+}
 
-  img {
-    height: 70px;
-    width: 180px;
+@font-face {
+  font-family: "numbertwo";
+  src: url("../../assets/fonts/centaurmt.ttf");
+}
+
+.navBar {
+  font-family: "numbertwo";
+  position: relative;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  align-items: center;
+  background-image: linear-gradient(to right, #000000ff, #00000000, #000000ff),
+    linear-gradient(to bottom, #000000ff, #00000000, #000000ff);
+  background-size: 100%;
+  box-shadow: $primary-shadow;
+  transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.display {
+    right: 0;
   }
 
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
+  .navToggler {
+    @include standard_vertical_layout;
+    background-color: transparent;
+    color: white;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20vmin;
+    height: 20vmin;
+    transition: 0.5s;
+    z-index: 1;
 
-    .displayMobileNav {
-      display: flex;
-      animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-      flex-direction: column;
-      position: fixed;
-      right: 0;
-      top: 0;
-      align-items: center;
-      background-color: $primary-yellow;
-      height: 100vh;
-      width: 300px;
-      box-shadow: $primary-shadow;
-      padding-top: 80px;
-      z-index: 9;
+    .navBurger {
+      @include standard_vertical_layout;
+      background-color: transparent;
+      border-radius: 1em 0 0 1em;
+      height: 20%;
+      width: 100%;
+      font-size: 2em;
 
-      @media screen and (min-width: 850px) {
-        flex-direction: row;
-        position: static;
-        padding: 0;
-        height: auto;
-        box-shadow: none;
-        width: auto;
-      }
-    }
-    .hideMobileNav {
-      display: none;
-      @media screen and (min-width: 850px) {
-        display: flex;
-      }
-    }
-
-    a {
-      color: $primary-black;
-      padding: $base-value;
-      margin-left: $base-value;
-      margin-right: $base-value;
-      text-decoration: none;
       &:hover {
-        background-color: $white-transparent;
-        transition: 0.5s;
-        border-radius: $base-value;
-      }
-      &:visited {
-        color: $primary-black;
+        cursor: pointer;
       }
     }
-    h3 {
-      &.burger {
-        z-index: 10;
-        font-size: 1.3em;
-        padding: $base-value;
-        margin-right: 2 * $base-value;
+  }
 
-        &:hover {
-          background-color: $white-transparent; // change to different animation
-          transition: 0.5s;
-          border-radius: $base-value;
-        }
+  .navContent {
+    @include standard_vertical_layout;
+    position: relative;
+    background-color: #00000033;
+    right: 0;
+    height: 100%;
+    width: 100%;
 
-        @media screen and (min-width: 850px) {
-          display: none;
+    .mainMenu {
+      @include standard_vertical_layout;
+      height: 75%;
+      width: 100%;
+      background-image: url("../../assets/images/app-of-empires-dw.png");
+      background-position: center;
+      background-size: contain, 100% 110%;
+      background-repeat: no-repeat;
+
+      .navLogo {
+        @include standard_vertical_layout;
+        height: 37%;
+        width: 50%;
+      }
+
+      .navItems {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 63%;
+        width: 50%;
+
+        .navItem {
+          @include standard_vertical_layout;
+          height: 20%;
+          width: 100%;
+
+          h3 {
+            line-height: 100%;
+            text-align: center;
+            font-size: 1.6em;
+            color: $primary-font-color;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
         }
       }
     }

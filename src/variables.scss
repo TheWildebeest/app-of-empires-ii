@@ -1,3 +1,16 @@
+@mixin standard_vertical_layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+$primary-font-color: #dedcdb;
+$secondary-font-color: #d4cca6;
+$primary-background: yellow;
+$secondary-background: yellowgreen;
+$primary-shadow: -2px 0px 10px black;
+
 /* Keyframes */
 @keyframes slide-in-right {
   0% {
