@@ -16,7 +16,6 @@ class App extends Component {
     const cleanData = [...data.civilizations];
     let dirtyData = cleanData[2];
     dirtyData.name = "Byzantines";
-    console.log(cleanData);
     return cleanData;
   }
 

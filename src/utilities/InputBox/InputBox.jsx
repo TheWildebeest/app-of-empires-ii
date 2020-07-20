@@ -13,7 +13,7 @@ class InputBox extends Component {
           type={type}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          onKeyUp={(event) => inputHandler(event.target)} />
+          onChange={(event) => inputHandler(event.target)} />
         <label htmlFor={htmlFor} className={styles.labelWrapper} >
           <img className={styles.iconImage} src={iconUrl} alt={altText} />
         </label>
