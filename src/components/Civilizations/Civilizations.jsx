@@ -3,42 +3,82 @@ import Overlay from '../../containers/Overlay';
 import PageHeading from '../../utilities/PageHeading';
 import InputBox from "../../utilities/InputBox";
 import ContentCard from "../../utilities/ContentCard";
-import CivsIcon from '../../assets/icons/civs.png'
+import CivsIcon from '../../assets/icons/civs.png';
 
 class Civilizations extends Component {
-
-  state = {
-    defaultCiv: [{ name: "...", unique_unit: ["https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"], unique_tech: ["https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"] }],
-    targetCiv: null,
-    uniqueUnits: null,
-    uniqueTechs: null,
-    textVisible: true
-  }
-
-  // componentDidMount() {
-  //   if (this.state.targetCiv === []) {
-  //     this.setState({ targetCiv: this.state.defaultCiv });
-  //   } else {
-  //     console.log("Component Successfully Mounted");
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     defaultCiv: [{ name: "None found.", unique_unit: ["https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"], unique_tech: ["https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"] }],
+  //     otherDefaultCiv: [{
+  //       "id": 18,
+  //       "name": "None found",
+  //       "expansion": "n/a",
+  //       "army_type": "n/a",
+  //       "unique_unit": [
+  //         "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager",
+  //         "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"
+  //       ],
+  //       "unique_tech": [
+  //         "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"
+  //       ],
+  //       "team_bonus": "n/a",
+  //       "civilization_bonus": [
+  //         "n/a",
+  //         "n/a",
+  //         "n/a"
+  //       ]
+  //     }],
+  //     targetCiv: {},
+  //     uniqueUnits: { unique_unit: ["..."] },
+  //     uniqueTechs: { unique_tech: ["..."] },
+  //     textVisible: true
   //   }
   // }
 
+  state = {
+    defaultCiv: [{ name: "None found.", unique_unit: ["https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"], unique_tech: ["https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"] }],
+    otherDefaultCiv: [{
+      "id": 18,
+      "name": "None found",
+      "expansion": "n/a",
+      "army_type": "n/a",
+      "unique_unit": [
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager",
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/unit/villager"
+      ],
+      "unique_tech": [
+        "https://age-of-empires-2-api.herokuapp.com/api/v1/technology/wheelbarrow"
+      ],
+      "team_bonus": "n/a",
+      "civilization_bonus": [
+        "n/a",
+        "n/a",
+        "n/a"
+      ]
+    }],
+    targetCiv: {},
+    uniqueUnits: [""],
+    uniqueTechs: [""],
+    textVisible: true
+  }
+
   getUniqueUnits = (uniqueUnits) => {
-    if (uniqueUnits) {
+    let listOfUnits = [""];
+    if (uniqueUnits !== null && uniqueUnits !== undefined) {
       uniqueUnits.forEach((unit) => {
-        console.log(unit);
-      }
-      )
+        fetch(`https://secret-ocean-49799.herokuapp.com/${unit}`)
+          .then(response => response.json())
+          .then(data => listOfUnits.push(data.name))
+          .catch(error => alert(error))
+      })
     } else {
       console.log("no units");
     }
+    this.setState({ uniqueUnits: listOfUnits })
+    return listOfUnits;
   }
-  // targetCiv.unique_unit.forEach(unit, () => {
-  //   fetch(`${unit}`)
-  //     .then(unit => unit.json())
-  //     .then(unit => console.log(unit))
-  //     .catch(error => alert(error.text()))
-  // })
+
 
   textFadeIn = () => {
     this.setState({ textVisible: false });
@@ -57,18 +97,28 @@ class Civilizations extends Component {
     const searchTerm = searchbox.value.toUpperCase();
     console.log(searchTerm);
     let currentCiv;
-    console.log(this.doStringsMatch(searchTerm)[0]);
-    if (searchTerm != "" && this.doStringsMatch(searchTerm).length >= 1) {
-      currentCiv = this.doStringsMatch(searchTerm)
-    } else if (searchTerm.length <= 1) {
-      currentCiv = this.state.defaultCiv;
+    if ((searchTerm !== "") && (this.props.civilizations != null)) {
+      if (this.doStringsMatch(searchTerm).length >= 1) {
+        currentCiv = this.doStringsMatch(searchTerm)
+      }
+    } else if (currentCiv === undefined || currentCiv === null) {
+      currentCiv = this.state.otherDefaultCiv;
     } else {
-      currentCiv = this.state.defaultCiv;
+      currentCiv = this.state.otherDefaultCiv;
     }
-    this.setState({
-      targetCiv: currentCiv[0]
-    });
+    if (currentCiv !== undefined && currentCiv !== null) {
+      this.setState({
+        targetCiv: currentCiv[0]
+      });
+    } else {
+      this.setState({
+        targetCiv: this.state.otherDefaultCiv[0]
+      });
+    }
     this.textFadeIn();
+    const uniqueUnits = this.state.targetCiv.unique_unit;
+    console.log(this.state.targetCiv);
+    this.getUniqueUnits(uniqueUnits);
   }
 
   render() {
@@ -85,7 +135,8 @@ class Civilizations extends Component {
           <ContentCard
             cardName={!targetCiv ? "" : targetCiv.name}
             textVisible={this.state.textVisible}
-            textFadeIn={this.state.textFadeIn} />
+            textFadeIn={this.state.textFadeIn}
+            cardData={this.state.uniqueUnits} />
         </Overlay>
       </>
     );
