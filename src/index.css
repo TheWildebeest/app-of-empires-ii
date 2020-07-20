@@ -12,3 +12,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}

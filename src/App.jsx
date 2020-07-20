@@ -22,7 +22,7 @@ class App extends Component {
   getApiData = (urlParameter) => {
     return (
       fetch(`https://secret-ocean-49799.herokuapp.com/https://age-of-empires-2-api.herokuapp.com/api/v1/${urlParameter}`)
-        .then(response => response)
+        // .then(response => response)
         .then(response => response.json())
         .then((data) => {
           return (

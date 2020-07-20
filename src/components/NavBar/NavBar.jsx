@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./NavBar.module.scss";
+import { Link } from '@reach/router'
 
 class NavBar extends Component {
 
@@ -38,18 +39,26 @@ class NavBar extends Component {
             <div className={styles.mainMenu}>
               <div className={styles.navLogo}></div>
               <ul className={styles.navItems}>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("civilizations")}><h3>
-                  Civilizations
-                </h3></li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("structures")}><h3>
-                  Structures
-                </h3></li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("technologies")}><h3>
-                  Technologies
-                </h3></li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("units")}><h3>
-                  Units
-                </h3></li>
+                <li className={styles.navItem} onClick={() => this.props.getApiData("civilizations")}>
+                  <Link to="civilizations">
+                    <h3>Civilizations</h3>
+                  </Link>
+                </li>
+                <li className={styles.navItem} onClick={() => this.props.getApiData("structures")}>
+                  <Link to="structures">
+                    <h3>Structures</h3>
+                  </Link>
+                </li>
+                <li className={styles.navItem} onClick={() => this.props.getApiData("technologies")}>
+                  <Link to="technologies">
+                    <h3>Technologies</h3>
+                  </Link>
+                </li>
+                <li className={styles.navItem} onClick={() => this.props.getApiData("units")}>
+                  <Link to="units">
+                    <h3>Units</h3>
+                  </Link>
+                </li>
               </ul>
             </div>
 

@@ -134,7 +134,6 @@ class Civilizations extends Component {
             autoComplete={"off"} autoFocus={true} civilizations={civilizations} inputHandler={this.searchCiv} />
           <ContentCard
             cardName={!targetCiv ? "" : targetCiv.name}
-            subHeading={"Unique Units:"}
             textVisible={this.state.textVisible}
             textFadeIn={this.state.textFadeIn}
             cardData={this.state.uniqueUnits} />
