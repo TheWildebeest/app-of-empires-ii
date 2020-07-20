@@ -45,20 +45,28 @@ class Civilizations extends Component {
     setTimeout(() => this.setState({ textVisible: true }), 1500)
   }
 
-  doStringsMatch = (civilization, searchbox) => {
-    civilization.name.toUpperCase().includes(searchbox.value.toUpperCase())
+  doStringsMatch = (searchTerm) => {
+    const result = this.props.civilizations.filter((civilization) => {
+      let civName = civilization.name.toUpperCase();
+      return civName.includes(searchTerm);
+    })
+    return result;
   }
 
   searchCiv = (searchbox) => {
-    const { civilizations } = this.props;
+    const searchTerm = searchbox.value.toUpperCase();
+    console.log(searchTerm);
     let currentCiv;
-    if ((searchbox.value && civilizations) && (civilizations.filter(civilization => this.doStringsMatch(civilization, searchbox))).length > 0) {
-      currentCiv = civilizations.filter(civilization => this.doStringsMatch(civilization, searchbox));
+    console.log(this.doStringsMatch(searchTerm)[0]);
+    if (searchTerm != "" && this.doStringsMatch(searchTerm).length >= 1) {
+      currentCiv = this.doStringsMatch(searchTerm)
+    } else if (searchTerm.length <= 1) {
+      currentCiv = this.state.defaultCiv;
     } else {
       currentCiv = this.state.defaultCiv;
     }
     this.setState({
-      targetCiv: currentCiv
+      targetCiv: currentCiv[0]
     });
     this.textFadeIn();
   }
@@ -85,3 +93,12 @@ class Civilizations extends Component {
 }
 
 export default Civilizations;
+
+        // if ((searchTerm && civilizations) && (civilizations.filter(civilization => {
+        //   const civilizationName = civilization.name.toUpperCase();
+        //   this.doStringsMatch(civilizationName, searchTerm)
+        // })) === false) {
+        //   currentCiv = civilizations.filter(civilization => {
+        //     const civilizationName = civilization.name.toUpperCase();
+        //     this.doStringsMatch(civilizationName, searchTerm);
+        //   });
