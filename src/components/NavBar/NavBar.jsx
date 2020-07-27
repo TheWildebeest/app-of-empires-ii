@@ -21,7 +21,6 @@ class NavBar extends Component {
   }
 
   toggleIcon = () => {
-    // return this.state.navIsShowing ? "✖" : "📜";
     return this.state.navIsShowing ? "✖" : "☰";
   }
 
@@ -39,32 +38,36 @@ class NavBar extends Component {
             <div className={styles.mainMenu}>
               <div className={styles.navLogo}></div>
               <ul className={styles.navItems}>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("civilizations")}>
+                <li className={styles.navItem}>
+                  {/* onClick={() => this.props.getApiData("civilizations")} */}
                   <Link to="civilizations">
                     <h3>Civilizations</h3>
                   </Link>
                 </li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("structures")}>
+                <li className={styles.navItem}>
+                  {/* onClick={() => this.props.getApiData("structures")} */}
                   <Link to="structures">
                     <h3>Structures</h3>
                   </Link>
                 </li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("technologies")}>
+                <li className={styles.navItem}>
+                  {/* onClick={() => this.props.getApiData("technologies")} */}
                   <Link to="technologies">
                     <h3>Technologies</h3>
                   </Link>
                 </li>
-                <li className={styles.navItem} onClick={() => this.props.getApiData("units")}>
+                <li className={styles.navItem}>
+                  {/* onClick={() => this.props.getApiData("units")} */}
                   <Link to="units">
                     <h3>Units</h3>
                   </Link>
                 </li>
-              </ul>
-            </div>
+              </ul >
+            </div >
 
-          </div>
+          </div >
 
-        </nav>
+        </nav >
       </>
     );
   }

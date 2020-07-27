@@ -4,11 +4,12 @@
   overflow: hidden;
   text-align: center;
   width: 100%;
-  min-height: 50vh;
-  height: 50vh;
+  max-width: 600px;
+
+  height: 65vh;
   border: 1px solid lightgray;
   border-radius: 4px;
-  margin: 2vh 0;
+  margin: 1vh 0;
 }
 
 .cardHeading {
@@ -22,27 +23,16 @@
   border-bottom: 4px goldenrod ridge;
 
   h2 {
-    text-shadow: -10px -10px 10px black;
+    text-shadow: 2px 2px 10px #ffffff99;
+    overflow: visible;
     line-height: 15vh;
     width: 100%;
     overflow-y: visible;
     font-family: "numberthree";
-    background: linear-gradient(
-        to bottom right,
-        black 0%,
-        black 40%,
-        goldenrod 45%,
-        silver 50%,
-        goldenrod 55%,
-        black 70%,
-        black 100%
-      ),
-      linear-gradient(to right, goldenrod, black);
+    background-image: linear-gradient(to bottom right, #ffffffff, #ffffff, #ffffff00);
+    color: #daa52066;
     background-clip: text;
-    -webkit-text-stroke-color: #000000;
-    -webkit-text-stroke-width: 0.1px;
-    color: #ffffff66;
-    font-size: calc(8vmin + 16px);
+    font-size: calc(8vmin + 8px);
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0s;
@@ -54,19 +44,62 @@
       transition-duration: 1s;
       transition-timing-function: ease;
     }
-
-    &:first-letter {
-      color: silver;
-    }
   }
 }
 
 .cardDetails {
-  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/fallback_campaign_render.jpg");
+  padding: 20px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   font-family: "numberfour";
-  font-size: 1em;
-  height: 70%;
+  font-size: 3em;
+  height: 90%;
+
+  h4 {
+    line-height: 2em;
+    color: lightgray;
+    font-size: clamp(0.4em, 6vw, 0.8em);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0s;
+    transition-timing-function: linear;
+
+    &.fadeIn {
+      opacity: 1;
+      transition-property: opacity;
+      transition-duration: 1s;
+      transition-timing-function: ease;
+    }
+  }
+
+  .list {
+    list-style-type: none;
+    font-family: "numberfour";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: goldenrod;
+
+    > * {
+      margin: 10px;
+    }
+  }
+}
+
+.civilizationsBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/fallback_campaign_render.jpg");
+}
+
+.technologiesBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/background-brick.jpg");
+}
+
+.structuresBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/background.jpg");
+}
+
+.unitsBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../../assets/images/background.jpg");
 }

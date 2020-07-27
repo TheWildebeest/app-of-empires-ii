@@ -21,3 +21,28 @@ a:visited {
   text-decoration: none;
   color: inherit;
 }
+
+.civilizationsBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../src/assets/images/fallback_campaign_render.jpg");
+}
+
+.technologiesBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../src/assets/images/background-brick.jpg");
+}
+
+.structuresBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../src/assets/images/background.jpg");
+}
+
+.unitsBackground {
+  background-image: linear-gradient(#00000099, #00000099), url("../src/assets/images/background.jpg");
+}
+
+.cardDetails {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "numberfour";
+  font-size: 1em;
+  height: 70%;
+}

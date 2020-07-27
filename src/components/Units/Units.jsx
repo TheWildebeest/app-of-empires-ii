@@ -3,7 +3,7 @@ import Overlay from '../../containers/Overlay';
 import PageHeading from '../../utilities/PageHeading';
 import InputBox from "../../utilities/InputBox";
 import ContentCard from "../../utilities/ContentCard";
-import CivsIcon from '../../assets/icons/civs.png';
+import UnitsIcon from '../../assets/icons/units.png';
 
 class Units extends Component {
 
@@ -83,10 +83,11 @@ class Units extends Component {
         <Overlay>
           <PageHeading pageHeadingText={"Units"} />
           <InputBox
-            id={"civilization"} type={"text"} placeholder={"Search for a civilization..."}
-            htmlFor={"civilization"} iconUrl={CivsIcon} altText={"Units"}
+            id={"unit"} type={"text"} placeholder={"Search for a unit..."}
+            htmlFor={"unit"} iconUrl={UnitsIcon} altText={"Units"}
             autoComplete={"off"} autoFocus={true} Units={Units} inputHandler={this.searchUnit} />
           <ContentCard
+            category={"unitsPage"}
             cardName={!targetUnit ? "" : targetUnit.name}
             subHeading={"Strengths"}
             textVisible={this.state.textVisible}
