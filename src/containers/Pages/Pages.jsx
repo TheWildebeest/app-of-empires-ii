@@ -12,10 +12,10 @@ class Pages extends Component {
     const { civilizations, getApiData, units } = this.props;
     return (
       <>
-        <NavBar getApiData={getApiData} />
+        <NavBar />
         <Router>
           {/* <CheatSheet default path="/" /> */}
-          <Civilizations path="civilizations" civilizations={civilizations} />
+          <Civilizations default path="civilizations" civilizations={civilizations} getApiData={getApiData} />
           {/* <Structures path="buildings" /> */}
           {/* <Technologies path="technologies" /> */}
           <Units path="units" units={units} />

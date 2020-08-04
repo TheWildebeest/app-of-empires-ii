@@ -6,23 +6,24 @@ import ContentCard from "../../utilities/ContentCard";
 import CivsIcon from '../../assets/icons/civs.png';
 
 
+
 class Civilizations extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      defaultCiv: [{
+      defaultCiv: {
         name: "",
-        bonus: ["", "", ""],
+        bonus: [""],
         castleAgeTech: "",
         imperialAgeTech: "",
         civID: "",
         uniqueUnits: [""],
         teamBonus: "",
         dateModified: [1000000000000]
-      }],
+      },
       targetCiv: {
         name: "",
-        bonus: ["", "", ""],
+        bonus: [""],
         castleAgeTech: "",
         imperialAgeTech: "",
         civID: "",
@@ -30,6 +31,8 @@ class Civilizations extends Component {
         teamBonus: "",
         dateModified: [1596332576807]
       },
+      uniqueUnits: "",
+      bonuses: "",
       textVisible: true
     }
   }
@@ -43,11 +46,18 @@ class Civilizations extends Component {
     setTimeout(() => this.setState({ textVisible: true }), 1000)
   }
 
+  mapUnitsToState = () => {
+    if (this.state.targetCiv) {
+      const units = this.state.targetCiv.uniqueUnits.map(unit => <li>{unit}</li>);
+      this.setState({uniqueUnits: units})
+    }
+  }
+
   filterBySearchTerm = (searchTerm) => {
     const result = this.props.civilizations.filter((civilization) => {
       let civName = civilization.name.toUpperCase();
       return civName.includes(searchTerm);
-    })
+    });
     return result;
   }
 
@@ -70,9 +80,10 @@ class Civilizations extends Component {
       });
     } else {
       this.setState({
-        targetCiv: this.state.defaultCiv[0]
+        targetCiv: this.state.defaultCiv
       });
     }
+    this.mapUnitsToState();
     this.textFadeIn();
   }
 
@@ -90,9 +101,11 @@ class Civilizations extends Component {
           // "category" is to allow dynamic styling depending on which parent element renders the card
           category={"civilizationsPage"}
           cardDetails={!targetCiv ? defaultCiv : targetCiv}
-          subHeading={"Unique Units:"}
+          uniqueUnits={this.state.uniqueUnits}
+          subHeadingOne={"Unique Units:"}
+          subHeadingTwo={"Unique Techs:"}
           textVisible={this.state.textVisible}
-          textFadeIn={this.state.textFadeIn} />
+        />
       </Overlay>
     );
   }

@@ -3,10 +3,13 @@ import styles from "./NavBar.module.scss";
 import { Link } from '@reach/router'
 
 class NavBar extends Component {
-
-  state = {
-    navIsShowing: true
+  constructor(props) {
+    super(props);
+    this.state= {
+    navIsShowing: false
+    }
   }
+
 
   toggleNav = () => {
     this.setState({

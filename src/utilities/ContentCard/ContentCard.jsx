@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import styles from './ContentCard.module.scss';
 import classNames from 'classnames/bind';
+import List from "../List";
 let cx = classNames.bind(styles);
-
 
 class ContentCard extends Component {
 
-  getListItems = () => {
-    setTimeout(() => {
-      this.props.cardData.map((item) => {
-        return <li className={styles.uniqueUnit}>{item}</li>
-      }
-      )
-    }, 4000
-    )
-  }
 
   render() {
-    const { cardName, subHeading } = this.props;
-    let className = cx({
+    const { cardDetails, subHeadingOne, subHeadingTwo, textVisible } = this.props;
+    let backgroundClassName = cx({
       cardDetails: true,
       civilizationsBackground: this.props.category === "civilizationsPage" ? true : false,
       structuresBackground: this.props.category === "structuresPage" ? true : false,
@@ -28,13 +19,17 @@ class ContentCard extends Component {
     return (
       <article className={styles.cardWrapper}>
         <div className={styles.cardHeading}>
-          <h2 className={this.props.textVisible ? styles.fadeIn : ""}>{cardName ? cardName : ""}</h2>
+          <h2 className={textVisible ? styles.fadeIn : ""}>{cardDetails.name}</h2>
         </div>
-        <section className={className}>
-          <h4 className={this.props.textVisible ? styles.fadeIn : ""}>{!cardName || cardName === "None found" ? "" : subHeading}</h4>
-          <ul className={styles.list}>
-            {this.props.children}
-          </ul>
+        <section className={backgroundClassName}>
+          <div className={styles.details}>
+            <h4 className={textVisible ? styles.fadeIn : ""}>{cardDetails.name === "" ? "" : subHeadingOne}</h4>
+            <List items={cardDetails.uniqueUnits} textVisible={textVisible}/>
+          </div>
+          <div className={styles.details}>
+            <h4 className={textVisible ? styles.fadeIn : ""}>{cardDetails.name === "" ? "" : subHeadingTwo}</h4>
+            <List items={cardDetails.bonus} textVisible={textVisible}/>
+          </div>
         </section>
       </article >
     );

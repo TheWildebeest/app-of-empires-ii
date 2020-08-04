@@ -46,3 +46,20 @@ a:visited {
   font-size: 1em;
   height: 70%;
 }
+
+*::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px goldenrod;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 3px goldenrod;
+  background-color: transparent;
+}
