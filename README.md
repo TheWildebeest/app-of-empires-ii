@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app that I was sure someone else would have made by now, but which I had the pleasure of making myself. (For personal use only.)
 
-## Available Scripts
+## Why App Of Empires II?
 
-In the project directory, you can run:
+I play Age Of Empires II HD Edition with friends and family on occasion.
 
-### `yarn start`
+We usually play "random civiliations" so that noone has an unfair advantage.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+However, one person in particular seems to receive the favour of the odds rather regularly.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+I never remember which civs have which strengths—so rather than learn them all off by heart (it is just a game after all), I thought
+it'd be nice to be able to look them up quickly on my phone.
 
-### `yarn test`
+## What about App Of Empires I?
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+What about it?
 
-### `yarn build`
+App Of Empires II is for Age Of Empires II. There was never an App Of Empires I.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Do you want to make a prequel app?
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you do, let me know!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## How does it work?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+It was supposed to be so simple! A glorified API call with beautiful styling, if I do say so myself.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+But then, horror of horrors, the API I was using stopped working!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ITo be honest though, it had been an almighty faff anyway, using less than satisfactory methods to get around CORS restrictions and whatnot.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+So, after a weekend building the front-end, the backend broke and I was put in the actually rather useful position of having to build my own.
 
-## Learn More
+As luck would have it, that was the very week that I learned Node on the \_nology software development bootcamp.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I built the API as a separate project, "Api Of Empires II", which I built in Node Express and deployed with Firebase Functions.
