@@ -5,27 +5,27 @@
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 5% 0;
-  
+  padding: 2% 0;
+
   &:first-child {
     margin-top: 0;
   }
-  
+
   li {
-    margin: 3% 0;
+    margin: 5% 0;
     text-align: left;
     color: gold;
     font-family: numbertwo;
-    font-size: clamp(0.4em, 2vw, 1.4em);
+    font-size: clamp(0.8em, 2.4vw, 1.4em);
     opacity: 0;
     transition-property: opacity;
     transition-duration: 0s;
     transition-timing-function: linear;
     &::first-letter {
-      font-family: numberone;
-      font-size: 1.4em;
+      font-family: numbertwo;
+      font-size: 1.3em;
     }
-    
+
     &.fadeIn {
       opacity: 1;
       transition-property: opacity;

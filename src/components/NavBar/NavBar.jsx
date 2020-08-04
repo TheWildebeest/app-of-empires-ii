@@ -5,8 +5,8 @@ import { Link } from '@reach/router'
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state= {
-    navIsShowing: false
+    this.state = {
+      navIsShowing: false
     }
   }
 
@@ -49,21 +49,21 @@ class NavBar extends Component {
                 </li>
                 <li className={styles.navItem}>
                   {/* onClick={() => this.props.getApiData("structures")} */}
-                  <Link to="structures">
-                    <h3>Structures</h3>
-                  </Link>
+                  {/* <Link to="structures"> */}
+                  <h3>Structures</h3>
+                  {/* </Link> */}
                 </li>
                 <li className={styles.navItem}>
                   {/* onClick={() => this.props.getApiData("technologies")} */}
-                  <Link to="technologies">
-                    <h3>Technologies</h3>
-                  </Link>
+                  {/* <Link to="technologies"> */}
+                  <h3>Technologies</h3>
+                  {/* </Link> */}
                 </li>
                 <li className={styles.navItem}>
                   {/* onClick={() => this.props.getApiData("units")} */}
-                  <Link to="units">
-                    <h3>Units</h3>
-                  </Link>
+                  {/* <Link to="units"> */}
+                  <h3>Units</h3>
+                  {/* </Link> */}
                 </li>
               </ul >
             </div >
