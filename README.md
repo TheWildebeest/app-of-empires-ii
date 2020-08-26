@@ -35,3 +35,14 @@ So, after a weekend building the front-end, the backend broke and I was put in t
 As luck would have it, that was the very week that I learned Node on the \_nology software development bootcamp.
 
 I built the API as a separate project, "Api Of Empires II", which I built in Node Express and deployed with Firebase Functions.
+
+### Setting up your own "App of Empires II"
+
+If you *really* must have an App of Empires to call your own, just clone down the repo and add the dependencies.
+
+```
+$ git clone https://github.com/TheWildebeest/app-of-empires-ii.git
+$ yarn install
+$ yarn start
+```
+You can either link this to the static data file, or to the Api Of Empires, for making the app functional. If you are cloning both repos, add them to the same firebase project so you have the hosting and firebase functions all in one place on the firebase console.
